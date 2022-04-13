@@ -1,2 +1,2 @@
 # First-Steps-on-Android-
-simple lessons to introduce people on developing android's app 
+simple lessons to introduce you on developing android's app 
