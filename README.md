@@ -15,7 +15,7 @@ Simple short lessons to introduce you on developing Android's app
 - Create an Emulator
 - Features
 
-- [ ] [M3] Android's Key element 
+- [ ] [M3] Key element 
 - Activity
 - Intent
 - Fragment
