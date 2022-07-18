@@ -1,6 +1,6 @@
 package com.example.loginexample;
 
-    public class Workout {
+public class Workout {
         private String name;
         private String description;
         public static final Workout[] workouts = {
