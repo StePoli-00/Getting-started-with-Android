@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast toast=new Toast(this);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        LayoutInflater inflater=getLayoutInflater();
+        View view=inflater.inflate(R.layout.toast_layout,(ViewGroup)findViewById(R.id.Linear));
+        toast.setView(view);
+        toast.show();
+
     }
 
     public void sendEmail(View view)
@@ -21,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         {
             Intent intent=new Intent(Intent.ACTION_SEND);
             intent.setData(Uri.parse("mailto:"));
-            String[] receivers={"poli14.sp@gmail.com","267705@studenti.unimore.it"};
+            String[] receivers={"nbicocchi@unimore.it","267705@studenti.unimore.it"};
             intent.putExtra(Intent.EXTRA_EMAIL,receivers);
             intent.putExtra(Intent.EXTRA_SUBJECT,"Hello this mail is sent from my app");
             intent.putExtra(Intent.EXTRA_TEXT,"hello from my app");
