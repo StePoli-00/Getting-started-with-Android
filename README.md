@@ -11,9 +11,9 @@ Simple short lessons to introduce you on developing Android's app
 
 ### :white_check_mark:[M2] Android Studio	
 * Setup & Ide
-* Create a new Project
-* Create an Emulator
-* Features
+* Create new Project
+* Create Emulator
+* Device Manager
 
 ### :white_check_mark: [M3] Key element of Applications
 * Activity
