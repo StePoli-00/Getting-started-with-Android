@@ -8,25 +8,36 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
+import com.FakeDb;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
+        EditText text_user= findViewById(R.id.usernameText);
+        EditText text_password= findViewById(R.id.passwordText);
         Button home=findViewById(R.id.loginButton);
-        EditText username= findViewById(R.id.usernameText);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+                FakeDb fakeDb=new FakeDb();
 
-                intent.putExtra("username",username.getText().toString());
-                startActivity(intent);
+                String username=String.valueOf(text_user.getText());
+                String password=String.valueOf(text_password.getText());
+
+                if(username.equals(fakeDb.getUsername()) || username.equals(fakeDb.getEmail())  && password.equals(fakeDb.getPassword())) {
+
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+
+                    intent.putExtra("username", fakeDb.getUsername());
+                    startActivity(intent);
+                }
             }
         });
     }

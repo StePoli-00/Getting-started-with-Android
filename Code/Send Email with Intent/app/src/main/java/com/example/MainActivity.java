@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendEmail(View view)
     {
+        boolean is=false;
         if(view.getId()==R.id.sendEmail)
         {
             Intent intent=new Intent(Intent.ACTION_SEND);
@@ -41,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(chooser);
 
 
+        }
+        if(is)
+        {
+            Intent intent=new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("geo:19.076,72.877"));
+            Intent chooser=Intent.createChooser(intent,"Launch Mapp");
+            startActivity(chooser);
         }
     }
 }
