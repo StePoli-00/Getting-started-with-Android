@@ -1,5 +1,8 @@
 # Getting started with Android
-Simple short lessons to introduce you on developing Android's app 
+Intermediate course of Android developing,this repository is composed by:
+-Power Point to give you the main component do understand and biult your own Android app 
+-Code example that you will find on the slide
+-A simple Android App 
 
 > $ git clone https://github.com/steven-real/Getting-started-with-Android.git
 
