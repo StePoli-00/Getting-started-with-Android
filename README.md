@@ -21,7 +21,9 @@ Simple short lessons to introduce you on developing Android's app
 * Fragment
 
 ### [M4] GUI
-* Layout
-* View
+* Managing Resources
+* View and ViewGroup
+* Layouts
+* Attributes
 
 
