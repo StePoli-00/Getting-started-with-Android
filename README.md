@@ -24,10 +24,16 @@ Intermediate course of Android developing,this repository is composed by:
 * Intent
 * Fragment
 
-### [M4] GUI
-* Managing Resources
-* View and ViewGroup
+### :white_check_mark: [M4] GUI
+* Android Resources
 * Layouts
-* Attributes
+* Widget
+
+### [M5] Data Access
+* Android internal & external storage 
+* SQLite 
+* REST API
+* Firebase
+
 
 
