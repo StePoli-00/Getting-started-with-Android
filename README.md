@@ -19,7 +19,7 @@ Intermediate course of Android developing,this repository is composed by:
 * Create Emulator
 * Device Manager
 
-### :white_check_mark: [M3] Key element of Applications
+### :white_check_mark: [M3] Application key elements
 * Activity
 * Intent
 * Fragment
