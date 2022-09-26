@@ -34,6 +34,7 @@ Intermediate course of Android developing,this repository is composed by:
 * SQLite 
 * REST API
 * Firebase
+* Adapter
 
 
 
