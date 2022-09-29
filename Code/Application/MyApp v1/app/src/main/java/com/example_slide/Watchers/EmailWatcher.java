@@ -1,16 +1,19 @@
-package com.example_slide.Watcher;
+package com.example_slide.Watchers;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
+import android.widget.EditText;
 
-public class StringWatcher implements TextWatcher {
+public class EmailWatcher  implements TextWatcher {
 
     private Context context;
-    public StringWatcher(Context context) {
+    private EditText editText;
+    public EmailWatcher(Context context, EditText editText) {
         this.context=context;
+        this.editText=editText;
     }
+
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -23,16 +26,21 @@ public class StringWatcher implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if (editable != null &&  editable.length() != 0) {
-
+         boolean ris=false;
             for (int i = 0; i < editable.length(); ++i) {
                 char c = editable.toString().charAt(i);
-                if (Character.isAlphabetic(c) == false) {
-                    Toast.makeText(context, "insert only letters", Toast.LENGTH_SHORT).show();
+                if (c == '@') {
+
+                    ris = true;
                 }
             }
 
-        }
+            if(ris==false)
+            {
+                editText.setError("Invalid Email");
+            }
+
 
     }
+
 }

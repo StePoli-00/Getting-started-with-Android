@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private CheckBox checkBox;
     private TextView welcome;
@@ -35,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
         users.put("267705@studenti.unimore.it","stefano");
         fakeDb=FakeDb.create(users);
 
-        setContentView(R.layout.welcome_layout);
+        setContentView(R.layout.login_layout);
 
         //Typeface
         welcome=findViewById(R.id.Welcome);
@@ -67,11 +67,13 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(fakeDb.verifyCredential(email.getText().toString(),password.getText().toString())) {
-                    i = new Intent(WelcomeActivity.this, MainActivity.class);
+                    i = new Intent(LoginActivity.this, HomeActivity.class);
+                    i.putExtra("name",email.getText().toString());
                     startActivity(i);
+
                 }else
                 {
-                    Toast.makeText(WelcomeActivity.this,"Incorrect Credential",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"Incorrect Credential",Toast.LENGTH_SHORT).show();
                 }
                 
             }
@@ -80,8 +82,8 @@ public class WelcomeActivity extends AppCompatActivity {
         singup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i=new Intent(WelcomeActivity.this,SignUpActivity.class);
-                i.putExtra("name",email.getText().toString());
+                i=new Intent(LoginActivity.this,SignUpActivity2.class);
+
                 startActivity(i);
             }
         });

@@ -1,13 +1,11 @@
+/*
 package com.example_slide;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,9 +22,10 @@ public class SignUpActivity extends AppCompatActivity  {
     private StringWatcher sw=new StringWatcher(this);
     private DateWatcher dw=new DateWatcher(this);
     private EditText email,password;
+
     private Button button;
     private FakeDb fakeDb=FakeDb.getInstance();
-
+    private ArrayList<View> views;
 
 
 
@@ -55,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity  {
                 for (Map.Entry<String,String> entry : fakeDb.getUsers().entrySet()) {
                     System.out.println("Username = " + entry.getKey() + ", Password = " + entry.getValue());
                 }
-                Intent i=new Intent(SignUpActivity.this,MainActivity.class);
+                Intent i=new Intent(SignUpActivity.this, HomeActivity.class);
                 i.putExtra("name",email.getText().toString());
                 startActivity(i);
 
@@ -67,9 +66,12 @@ public class SignUpActivity extends AppCompatActivity  {
 
 
 
+
+
+
     }
 
 
 
 
-}
+}*/

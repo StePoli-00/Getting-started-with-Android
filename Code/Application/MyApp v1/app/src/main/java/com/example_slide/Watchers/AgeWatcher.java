@@ -1,15 +1,18 @@
-package com.example_slide.Watcher;
+package com.example_slide.Watchers;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class AgeWatcher implements TextWatcher {
+public class AgeWatcher  implements TextWatcher {
 
     private Context context;
-    public AgeWatcher(Context context) {
+    private EditText editText;
+    public AgeWatcher(Context context, EditText editText) {
         this.context=context;
+        this.editText=editText;
     }
 
     @Override
@@ -36,7 +39,8 @@ public class AgeWatcher implements TextWatcher {
             int n = Integer.parseInt(editable.toString());
             System.out.println(n);
             if (n < 0 || n > 110) {
-                Toast.makeText(context, "invalid age number", Toast.LENGTH_LONG).show();
+
+                editText.setError("Invalid Age");
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
