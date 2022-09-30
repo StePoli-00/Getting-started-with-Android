@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
-
 public class HomeActivity extends AppCompatActivity {
 
         TextView textView;
@@ -23,15 +21,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home_layout);
         textView=findViewById(R.id.home_name);
         Intent i=getIntent();
-        String text=i.getStringExtra("name");
+        String text=i.getStringExtra("username");
         textView.setText(text);
-        mail=findViewById(R.id.mail_button);
-        mail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+
 
 
 

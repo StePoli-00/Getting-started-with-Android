@@ -74,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity  {
                             System.out.println("Username = " + entry.getKey() + ", Password = " + entry.getValue());
                         }
                         Intent i = new Intent(SignUpActivity.this, HomeActivity.class);
-                        i.putExtra("name", editable.get(2).getText().toString());
+                        i.putExtra("username", editable.get(2).getText().toString());
                         startActivity(i);
                     }
                     else

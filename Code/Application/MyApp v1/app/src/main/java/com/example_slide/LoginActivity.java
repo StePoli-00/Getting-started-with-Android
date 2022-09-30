@@ -44,10 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         welcome=findViewById(R.id.Welcome);
         Typeface myfont=Typeface.createFromAsset(getAssets(),"font/poppins/Poppins-Black.otf");
         welcome.setTypeface(myfont);
-
         email=findViewById(R.id.email_edit);
         password=findViewById(R.id.pass_edit);
-
         checkBox=findViewById(R.id.checkbox);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
                        @Override
                        public void onClick(View v) {
-                           Snackbar.make(rl,"now the app will remember the credential",Snackbar.LENGTH_SHORT).setTextColor(Color.WHITE).show();
+                           Snackbar.make(rl,"now the app will remember the credential",Snackbar.LENGTH_SHORT).setTextColor(Color.WHITE).setBackgroundTint(Color.BLUE).show();
                        }
                    });
                    snackbar.setActionTextColor(Color.YELLOW);
@@ -80,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(fakeDb.verifyCredential(email.getText().toString(),password.getText().toString())) {
                     i = new Intent(LoginActivity.this, HomeActivity.class);
-                    i.putExtra("name",email.getText().toString());
+                    i.putExtra("username",email.getText().toString());
                     startActivity(i);
 
                 }else
@@ -95,10 +93,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 i=new Intent(LoginActivity.this, SignUpActivity.class);
-
                 startActivity(i);
             }
         });
+
+
 
 
 

@@ -7,16 +7,6 @@
     android:background="@drawable/drawable"
     tools:context=".HomeActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
 
     <GridLayout
         android:id="@+id/gridLayout"
@@ -98,6 +88,8 @@
 
         app:layout_constraintVertical_bias="0.212"
         tools:layout_editor_absoluteX="29dp" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
