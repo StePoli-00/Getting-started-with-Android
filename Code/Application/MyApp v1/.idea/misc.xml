@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/drawable/heart.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/drawable/mail.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/home_layout.xml" value="0.22212148685403446" />
         <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/login_layout.xml" value="0.19945602901178605" />
+        <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/sendEmail_layout.xml" value="0.21462163317657118" />
         <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/signup_layout.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/signup_layout2.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/Administrator/Documents/GitHub/First-Steps-on-Android-/Code/Application/MyApp v1/app/src/main/res/layout/welcome_layout.xml" value="0.33" />
