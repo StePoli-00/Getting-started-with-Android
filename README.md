@@ -32,7 +32,6 @@ Intermediate course of Android developing,this repository is composed by:
 ### [M5] Data Access
 * Android internal & external storage 
 * SQLite 
-* REST API
 * Firebase
 * Adapter
 
