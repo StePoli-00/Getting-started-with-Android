@@ -25,7 +25,8 @@ Intermediate course of Android developing,this repository is composed by:
 * Fragment
 
 ### :white_check_mark: [M4] GUI
-* Android Resources
+* Android Resources: Manifest, XML and Res folder
+* Concepts on screens
 * Layouts
 * Widget
 
