@@ -29,8 +29,9 @@ Intermediate course of Android developing,this repository is composed by:
 * Layouts
 * Widget
 
-### [M5] Data Access
-* Android internal & external storage 
+### [M5] Managing Data
+* Shared Preferences
+* ....
 * SQLite 
 * Firebase
 * Adapter
