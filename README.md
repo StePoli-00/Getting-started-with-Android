@@ -33,6 +33,7 @@ Intermediate course of Android developing,this repository is composed by:
 ### [M5] Managing Data
 * Shared Preferences
 * Internal & External Storage
+* Cache Storage
 * SQLite 
 * Content Providers
 * Firebase
