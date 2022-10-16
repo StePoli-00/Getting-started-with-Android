@@ -32,10 +32,11 @@ Intermediate course of Android developing,this repository is composed by:
 
 ### [M5] Managing Data
 * Shared Preferences
-* ....
+* Internal & External Storage
 * SQLite 
+* Content Providers
 * Firebase
-* Adapter
+* Display Data: ListView,ScrolView.. 
 
 
 
