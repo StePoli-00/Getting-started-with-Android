@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/drawable"
+    android:background="@drawable/background"
     tools:context=".HomeActivity">
 
 
@@ -58,7 +58,7 @@
             android:layout_column="3"
             android:layout_gravity="fill"
             android:background="@color/transparent"
-            android:src="@drawable/mail"
+            android:src="@drawable/email"
             tools:ignore="SpeakableTextPresentCheck" />
 
 

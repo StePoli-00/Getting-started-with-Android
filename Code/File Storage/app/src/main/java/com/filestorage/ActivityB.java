@@ -56,6 +56,8 @@ public class ActivityB extends AppCompatActivity {
 
     }
 
+ 
+
     public void load(RelativeLayout relativeLayout, EditText username, EditText password)
     {
         FileInputStream input=null;
