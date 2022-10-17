@@ -60,6 +60,26 @@ public class DataBaseAdapter  {
 
     }
 
+    public int deleteDataRow(String name)
+    {
+        SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
+        String[] whereArgs={name};
+        String deleteQuery=SQLiteHelper.NAME+"=?";
+        int num=db.delete(SQLiteHelper.TABLE_NAME,deleteQuery,whereArgs);
+        return num;
+
+    }
+
+    public int  updateData(String oldName,String newName)
+    {
+        SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
+        String queryUpdate= SQLiteHelper.NAME+"=?";
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(sqLiteHelper.NAME,newName);
+        String whereArgs[]={oldName};
+        int rowNum=db.update(SQLiteHelper.TABLE_NAME,contentValues,queryUpdate,whereArgs);
+        return rowNum;
+    }
 
     public String getData(String name){
         SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
@@ -111,61 +131,7 @@ public class DataBaseAdapter  {
 
 
 
-    class SQLiteHelper extends SQLiteOpenHelper {
 
-        private static final String DATABASE_NAME ="MyDataBase.db";
-        private static final int DATABASE_VERSION = 3;
-        static final String PASSWORD = "Password";
-        static final String NAME ="Name";
-        static final String UID="_id";
-        static final String TABLE_NAME ="USERS";
-        private static final String createTable="CREATE TABLE "+TABLE_NAME+"("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+NAME+" VARCHAR(255), "+PASSWORD+" VARCHAR(255), UNIQUE("+NAME+"));";
-        private static final String dropTable="DROP TABLE IF EXISTS "+TABLE_NAME+";";
-        private Context context;
-
-
-
-
-        public SQLiteHelper(Context context) {
-
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-            this.context=context;
-            Toast.makeText(context,"constructor called",Toast.LENGTH_SHORT).show();
-        }
-
-
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-
-            try{
-                //Toast.makeText(context,"onCreate called",Toast.LENGTH_SHORT).show();
-                db.execSQL(createTable);
-                //db.execSQL("INSERT INTO "+TABLE_NAME+" VALUES (\"john\" )");
-                //db.execSQL("CREATE TABLE "+ TABLE_NAME+"(_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(255));");
-
-            }
-            catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE if exists table1;");
-
-            try {
-                db.execSQL(dropTable);
-                onCreate(db);
-                //Toast.makeText(context, "onUpgrade called", Toast.LENGTH_SHORT).show();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
 
 
 
