@@ -33,11 +33,9 @@ Intermediate course of Android developing,this repository is composed by:
 ### [M5] Managing Data
 * Shared Preferences
 * Internal & External Storage
-* Cache Storage
-* SQLite 
-* Content Providers
-* Firebase
-* Display Data: ListView,ScrolView.. 
+* Introduction to Database: SQLite 
+* Introduction to Remote Database: Firebase
+* Display Data : Adapter & ViewAdapter 
 
 
 
