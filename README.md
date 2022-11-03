@@ -7,8 +7,8 @@ Intermediate course of Android developing,this repository is composed by:
 
 > $ git clone https://github.com/steven-real/Getting-started-with-Android.git
 
-## Android Modules
- [M1] Introduction to Android
+##  Modules
+### [M1] Introduction to Android
 * Motivation
 * History
 * Android Architecture
@@ -19,7 +19,7 @@ Intermediate course of Android developing,this repository is composed by:
 * Create Emulator
 * Device Manager
 
-### [M3] Application key elements
+### [M3] Application Key Elements
 * Activity
 * Intent
 * Fragment
