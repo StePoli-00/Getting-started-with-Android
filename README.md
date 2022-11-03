@@ -8,23 +8,23 @@ Intermediate course of Android developing,this repository is composed by:
 > $ git clone https://github.com/steven-real/Getting-started-with-Android.git
 
 ## Android Modules
-### :white_check_mark: [M1] Introduction to Android
+ [M1] Introduction to Android
 * Motivation
 * History
 * Android Architecture
 
-### :white_check_mark:[M2] Android Studio	
+### [M2] Android Studio	
 * Setup & Ide
 * Create new Project
 * Create Emulator
 * Device Manager
 
-### :white_check_mark: [M3] Application key elements
+### [M3] Application key elements
 * Activity
 * Intent
 * Fragment
 
-### :white_check_mark: [M4] GUI
+### [M4] GUI
 * Android Resources: Manifest, XML and Res folder
 * Concepts on screens
 * Layouts
