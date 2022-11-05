@@ -7,24 +7,24 @@ Intermediate course of Android developing,this repository is composed by:
 
 > $ git clone https://github.com/steven-real/Getting-started-with-Android.git
 
-## Android Modules
-### :white_check_mark: [M1] Introduction to Android
+##  Modules
+### [M1] Introduction to Android
 * Motivation
 * History
 * Android Architecture
 
-### :white_check_mark:[M2] Android Studio	
+### [M2] Android Studio	
 * Setup & Ide
 * Create new Project
 * Create Emulator
 * Device Manager
 
-### :white_check_mark: [M3] Application key elements
+### [M3] Application Key Elements
 * Activity
 * Intent
 * Fragment
 
-### :white_check_mark: [M4] GUI
+### [M4] GUI
 * Android Resources: Manifest, XML and Res folder
 * Concepts on screens
 * Layouts
@@ -33,11 +33,9 @@ Intermediate course of Android developing,this repository is composed by:
 ### [M5] Managing Data
 * Shared Preferences
 * Internal & External Storage
-* Cache Storage
-* SQLite 
-* Content Providers
-* Firebase
-* Display Data: ListView,ScrolView.. 
+* Introduction to Database: SQLite 
+* Introduction to Remote Database: Firebase
+* Display Data : Adapter & ViewAdapter 
 
 
 
