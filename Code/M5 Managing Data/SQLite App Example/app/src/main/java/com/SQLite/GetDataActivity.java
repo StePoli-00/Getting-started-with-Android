@@ -15,8 +15,8 @@ public class GetDataActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_data);
-        result=findViewById(R.id.display_textView);
+        setContentView(R.layout.get_layout);
+        result=findViewById(R.id.textResult);
         sqlitehelper=new DataBaseAdapter(this);
         getUser();
     }

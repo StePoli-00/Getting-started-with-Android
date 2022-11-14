@@ -20,25 +20,23 @@ public class DataBaseAdapter  {
         this.context=context;
     }
 
-    public long  insertData(String username, String pass)
+    public long  insertData(String name, String position)
     {
 
-        String name=username.replaceAll("\\s+","");
-        String password=pass.replaceAll("\\s+","");
         ContentValues contentValues=new ContentValues();
         SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
         contentValues.put(SQLiteHelper.NAME,name);
-        contentValues.put(SQLiteHelper.PASSWORD,password);
+        contentValues.put(SQLiteHelper.POSITION,position);
         long id=db.insert(sqLiteHelper.TABLE_NAME,null,contentValues);
         Log.d("value",String.valueOf(id));
         return id;
 
     }
 
-    public String  getAllData()
+   /* public Hasmap<String,String>  getAllData()
     {
         SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
-        String columns[]={sqLiteHelper.UID,sqLiteHelper.NAME,sqLiteHelper.PASSWORD};
+        String columns[]={sqLiteHelper.UID,sqLiteHelper.NAME,sqLiteHelper.POSITION};
         StringBuffer buffer=new StringBuffer();
         Cursor cursor = db.query(SQLiteHelper.TABLE_NAME, columns, null, null, null, null,null);
         int i=0;
@@ -47,19 +45,19 @@ public class DataBaseAdapter  {
         {
             return "no data was found";
         }
-
+        String name,position;
         while(cursor.moveToNext()) {
 
             int id=cursor.getInt(0);
-            String name=cursor.getString(1);
-            String password=cursor.getString(2);
-            buffer.append(id+" "+name+" "+password+"\n");
+            name=cursor.getString(1);
+            position=cursor.getString(2);
+            buffer.append(id+" "+name+" "+" "+position+"\n");
 
 
         }
         return buffer.toString();
 
-    }
+    }*/
 
     public int deleteData(String name)
     {
@@ -71,29 +69,34 @@ public class DataBaseAdapter  {
 
     }
 
-    public int  updateData(String oldName,String newName)
+    public int  updateData(String name, String position)
     {
         SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
-        String queryUpdate= SQLiteHelper.NAME+"=?";
-        ContentValues contentValues=new ContentValues();
-        contentValues.put(sqLiteHelper.NAME,newName);
-        String whereArgs[]={oldName};
-        int rowNum=db.update(SQLiteHelper.TABLE_NAME,contentValues,queryUpdate,whereArgs);
-        return rowNum;
+        ArrayList<String> users=getUsers();
+        if(users.contains(name))
+        {
+            String queryUpdate=sqLiteHelper.NAME+"=?";
+            ContentValues contentValues=new ContentValues();
+            contentValues.put(sqLiteHelper.NAME,name);
+            contentValues.put(sqLiteHelper.POSITION,position);
+            String whereArgs[]={name};
+            int rowNum=db.update(SQLiteHelper.TABLE_NAME,contentValues,queryUpdate,whereArgs);
+            return rowNum;
+        }
+        return -1;
+
     }
 
-    public String getData(String name){
+    public String getAllData(){
         SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
-        String columns[]={sqLiteHelper.NAME,sqLiteHelper.PASSWORD};
+        String columns[]={sqLiteHelper.UID,sqLiteHelper.NAME,sqLiteHelper.POSITION};
         /**1st way**/
         /*
         String whereCondition=columns[0]+"=\""+name+"\"";
         Cursor cursor=db.query(sqLiteHelper.TABLE_NAME,columns,whereCondition,null,null,null,null);
         */
         /***2nd way**/
-        String selectionArgs[]={name};
-        String whereCondition=columns[0]+"=?";
-        Cursor cursor=db.query(sqLiteHelper.TABLE_NAME,columns,whereCondition,selectionArgs,null,null,null);
+        Cursor cursor=db.query(sqLiteHelper.TABLE_NAME,columns,null,null,null,null,null);
         Log.d("cursor",cursor.toString());
         StringBuffer stringBuffer=new StringBuffer();
         int index;
@@ -104,7 +107,7 @@ public class DataBaseAdapter  {
                 /***
                  * we could also specify index row
                  * String name=cursor.getString(1)
-                 * String password=cursor.getString(2)
+                 * String position=cursor.getString(2)
                  * In this particularly  case all values are string so we can use a for to retrieve data.
                  * This is way better, because if database structure change nothing will happen to this piece of code,
                  * Also column returned may change depending of query we perform
@@ -127,13 +130,12 @@ public class DataBaseAdapter  {
 
     }
 
-    public ArrayList<String> getUsersName()
+    public ArrayList<String> getUsers()
     {
 
         String columns[]={sqLiteHelper.NAME};
         SQLiteDatabase db=sqLiteHelper.getReadableDatabase();
         Cursor cursor=db.query(sqLiteHelper.TABLE_NAME,columns,null,null,null,null,null);
-        StringBuffer stringBuffer=new StringBuffer();
         ArrayList<String> users=new ArrayList<>();
         int index= cursor.getColumnIndex(sqLiteHelper.NAME);
         while (cursor.moveToNext()) {
@@ -141,14 +143,5 @@ public class DataBaseAdapter  {
         }
         return  users;
     }
-
-
-
-
-
-
-
-
-
 
 }

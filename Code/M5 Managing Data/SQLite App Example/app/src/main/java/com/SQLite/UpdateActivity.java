@@ -1,3 +1,4 @@
+/*
 package com.SQLite;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,25 +15,27 @@ import java.util.ArrayList;
 public class UpdateActivity extends AppCompatActivity {
 
     DataBaseAdapter sqlitehelper;
-    EditText oldUsername,newUsername;
+    EditText newPosition;
     Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.update_layout);
         sqlitehelper=new DataBaseAdapter(this);
-        oldUsername=findViewById(R.id.oldName_edit);
-        newUsername=findViewById(R.id.newName_edit);
-        update=findViewById(R.id.update_btn_into_updateAct);
+        newName=findViewById(R.id.edit_name);
+        newLastName=findViewById(R.id.edit_lastname);
+        newPosition=findViewById(R.id.edit_position);
+        update=findViewById(R.id.update_btnAct);
         update.setOnClickListener(v-> updateRecord());
     }
 
     private void updateRecord() {
 
-        ArrayList<String> users=sqlitehelper.getUsersName();
-        if(users.contains(oldUsername.getText().toString()))
+
+        ArrayList<String> users=sqlitehelper.getUsers();
+        if(users.contains())
         {
-            sqlitehelper.updateData(oldUsername.getText().toString(),newUsername.getText().toString());
+            sqlitehelper.updateData(newNam.getText().toString(),newUsername.getText().toString());
             Toast.makeText(this,"updated",Toast.LENGTH_SHORT).show();
             finish();
         }
@@ -43,3 +46,4 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
 }
+*/

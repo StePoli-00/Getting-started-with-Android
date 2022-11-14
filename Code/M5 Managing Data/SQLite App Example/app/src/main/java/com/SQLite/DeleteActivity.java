@@ -1,3 +1,4 @@
+/*
 package com.SQLite;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,10 +37,10 @@ public class DeleteActivity extends AppCompatActivity {
 
 
     private void delete() {
-        sqlitehelper.getUsersName();
+        sqlitehelper.getName();
         String deleteUsr=deleteUsername.getText().toString();
         if(deleteUsr.length()!=0) {
-            ArrayList<String> users=sqlitehelper.getUsersName();
+            ArrayList<String> users=sqlitehelper.getName();
             if(users.contains(deleteUsr))
             {
                 sqlitehelper.deleteData(deleteUsername.getText().toString());
@@ -52,3 +53,4 @@ public class DeleteActivity extends AppCompatActivity {
         }
     }
 }
+*/

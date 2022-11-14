@@ -9,21 +9,16 @@
         android:fullBackupContent="@xml/backup_rules"
 
         android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/staff"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SqLite2"
+        android:theme="@style/Theme.SqLite"
         tools:targetApi="31">
-        <activity
-            android:name=".UpdateActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DeleteActivity"
-            android:exported="false" />
+
         <activity
             android:name=".GetDataActivity"
             android:exported="false" />
         <activity
-            android:name=".AddActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
