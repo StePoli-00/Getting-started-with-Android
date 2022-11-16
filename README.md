@@ -1,7 +1,7 @@
 # Getting started with Android
 Intermediate course of Android developing,this repository is composed by:
 
-* Power Point to give you the main component to understand and built your own Android app
+* Presentation to understand and built your own Android app
 * Code example that you will find inside the slide
 * Prototype application 
 
