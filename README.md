@@ -6,12 +6,13 @@ Intermediate course of Android developing,this repository is composed by:
 
 ### Android 
 * [Android API](https://developer.android.com/reference)
+* [Android SDK](https://developer.android.com/studio/releases/platform-tools)
 * [Android Studio](https://developer.android.com/studio)
 
 ## Slides, code examples
 Slides, and code examples can be found here and downloaded using git:
 
-> $ git clone 
+> $ git clone https://github.com/StePoli-00/Getting-started-with-Android.git
 
 Both slides and code examples might be updated or bug-fixed during the course. At any time, for downloading the latest version, go the course material directory (on your pc) and use:
 
@@ -22,11 +23,16 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Reto Meier: PROFESSIONAL ANDROID™ 4 APPLICATION DEVELOPMENT.
 
 ### Misc
-* https://www.kodeco.com/34718715-lifecycle-aware-components-in-android (free android course)
-* https://www.html.it/guide/guida-android/ (android tutorial guide)
-* https://www.youtube.com/watch?v=U5aeM5dvUpA&list=PLl-K7zZEsYLmgdxMEHar35Wo26fLWm9BI (firebase real time database introduction)
+* https://www.kodeco.com/34718715-lifecycle-aware-components-in-android 
+* https://www.html.it/guide/guida-android/ 
+* https://www.studytonight.com/android/introduction-to-android
+* https://www.infobrother.com/Tutorial/XML-Android/XML-Syntax
+* https://www.youtube.com/watch?v=U5aeM5dvUpA&list=PLl-K7zZEsYLmgdxMEHar35Wo26fLWm9BI 
 
-
+### Material Design
+* https://fonts.google.com/icons
+* https://www.blobmaker.app/
+* https://getwaves.io/
 
 
 ##  Modules
