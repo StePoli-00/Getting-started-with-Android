@@ -1,4 +1,4 @@
-package com.staffApp;
+package com.staffApp.Database;
 
 import com.google.firebase.database.Exclude;
 

@@ -1,23 +1,19 @@
 package com.staffApp;
 
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.staffApp.Database.DataBaseAdapter;
+import com.staffApp.Database.Employee;
+import com.staffApp.RecyclerView.RecycleViewActivity;
+import com.staffApp.RecyclerView.RecycleViewAdapter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
           dataBaseAdapter.add(employee)
                   .addOnSuccessListener(suc -> Toast.makeText(this, "Record inserted", Toast.LENGTH_SHORT).show())
                   .addOnFailureListener(er -> Toast.makeText(this, er.getMessage(), Toast.LENGTH_SHORT).show());
+
 
     }
 

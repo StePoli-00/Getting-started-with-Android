@@ -1,6 +1,7 @@
-package com.staffApp;
+package com.staffApp.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.R;
+import com.staffApp.Database.Employee;
+import com.staffApp.MainActivity;
+import com.staffApp.R;
 
 import java.util.ArrayList;
 
@@ -45,38 +48,11 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         Employee employee=element.get(position);
         viewHolder.name.setText(employee.getName());
         viewHolder.position.setText(employee.getPosition());
-
-        /*viewHolder.option.setOnClickListener(v->{
-
-           *//* PopupMenu popupMenu=new PopupMenu(context,viewHolder.option);
-            popupMenu.inflate(R.menu.option_menu);
-
-            popupMenu.setOnMenuItemClickListener(item ->
-            {
-                switch (item.getItemId()) {
-                    case R.id.menu_edit:
-                        Intent intent = new Intent(context, MainActivity.class);
-                        intent.putExtra("EDIT",employee);
-                        context.startActivity(intent);
-                        break;
-                    case R.id.menu_remove:
-                        DataBaseAdapter dataBaseAdapter=new DataBaseAdapter();
-                        dataBaseAdapter.remove(employee.getKey())
-                                .addOnSuccessListener(suc-> {
-                                    Toast.makeText(context,"Record Removed",Toast.LENGTH_SHORT).show();
-                                    notifyItemRemoved(position);
-                                    element.remove(position);
-                                }
-                                )
-                                .addOnFailureListener(er -> Toast.makeText(context, er.getMessage(), Toast.LENGTH_SHORT).show());
-                        break;
-                }
-                return false;
-
-            });
-            popupMenu.show();*//*
-        });*/
-
+        viewHolder.edit.setOnClickListener(v->{
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtra("EDIT",employee);
+            context.startActivity(intent);
+        });
 
     }
 
