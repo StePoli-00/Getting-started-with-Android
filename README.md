@@ -1,7 +1,7 @@
 # Getting started with Android
 Intermediate course of Android developing,this repository is composed by:
 
-* Power Point to give you the main component to understand and built your own Android app
+* Presentation to understand and built your own Android app
 * Code example that you will find inside the slide
 * Prototype application 
 
@@ -28,14 +28,15 @@ Intermediate course of Android developing,this repository is composed by:
 * Android Resources: Manifest, XML and Res folder
 * Concepts on screens
 * Layouts
-* Widget
+* Useful View
+* Advanced View : Adapter & ViewAdapter 
 
 ### [M5] Managing Data
 * Shared Preferences
 * Internal & External Storage
-* Introduction to Database: SQLite 
-* Introduction to Remote Database: Firebase
-* Display Data : Adapter & ViewAdapter 
+* Local Database: SQLite 
+* Remote Database: Firebase
+
 
 
 
