@@ -1,11 +1,33 @@
 # Getting started with Android
 Intermediate course of Android developing,this repository is composed by:
-
 * Presentation to understand and built your own Android app
 * Code example that you will find inside the slide
 * Prototype application 
 
-> $ git clone https://github.com/steven-real/Getting-started-with-Android.git
+### Android 
+* [Android API](https://developer.android.com/reference)
+* [Android Studio](https://developer.android.com/studio)
+
+## Slides, code examples
+Slides, and code examples can be found here and downloaded using git:
+
+> $ git clone 
+
+Both slides and code examples might be updated or bug-fixed during the course. At any time, for downloading the latest version, go the course material directory (on your pc) and use:
+
+> $ git pull (in case of errors: git reset --hard; git pull)
+
+## Books
+* Head First: Android Development  A Brain-Friendly Guide; Dawn Griffiths & David Griffiths 
+* Reto Meier: PROFESSIONAL ANDROID™ 4 APPLICATION DEVELOPMENT.
+
+### Misc
+* https://www.kodeco.com/34718715-lifecycle-aware-components-in-android (free android course)
+* https://www.html.it/guide/guida-android/ (android tutorial guide)
+* https://www.youtube.com/watch?v=U5aeM5dvUpA&list=PLl-K7zZEsYLmgdxMEHar35Wo26fLWm9BI (firebase real time database introduction)
+
+
+
 
 ##  Modules
 ### [M1] Introduction to Android
