@@ -24,31 +24,52 @@
         />
 
 
-
     <EditText
         android:id="@+id/add_name_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name"
         android:inputType="textCapWords"
         android:imeOptions="actionNext"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:hint="name"
+        android:minHeight="48dp"/>
 
     <EditText
         android:id="@+id/add_position_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textCapWords"
-        android:imeOptions="actionDone"
+        android:imeOptions="actionNext"
         android:hint="position"
         android:minHeight="48dp"/>
 
+
+    <EditText
+        android:id="@+id/add_email_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/add_phone_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="phone"
+        android:inputType="phone"
+        android:imeOptions="actionDone"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+
     <androidx.cardview.widget.CardView
-        android:layout_width="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
         app:cardCornerRadius="90dp"
         android:backgroundTint="@color/orange3"
-        android:layout_gravity="right">
+        android:layout_gravity="center">
         <TextView
             android:id="@+id/dialog_add_btn"
             android:layout_width="match_parent"

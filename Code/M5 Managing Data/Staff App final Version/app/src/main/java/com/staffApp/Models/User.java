@@ -1,4 +1,4 @@
-package com.staffApp.Registration;
+package com.staffApp.Models;
 
 import java.io.Serializable;
 

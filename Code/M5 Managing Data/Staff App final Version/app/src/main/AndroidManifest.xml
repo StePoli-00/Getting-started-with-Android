@@ -14,18 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseApp"
         tools:targetApi="31">
+
         <activity
             android:name=".LandingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".RecyclerView.NewRVActivity"
+            android:exported="true">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
         </activity>
-        <activity
-            android:name=".RecyclerView.RecycleViewActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.staffApp.Database;
+package com.staffApp.Models;
 
 import com.google.firebase.database.Exclude;
 
@@ -8,15 +8,33 @@ public class Employee  implements Serializable {
 
     @Exclude
     private String idEmployee;
-    private String name,position,idBoss;
+    private String name,email,position,phone,idBoss;
 
     public Employee(){
 
     }
 
-    public Employee(String name, String position,String idBoss) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Employee(String name, String position, String email, String phone, String idBoss) {
         this.name = name;
         this.position = position;
+        this.email=email;
+        this.phone=phone;
         this.idBoss=idBoss;
     }
 

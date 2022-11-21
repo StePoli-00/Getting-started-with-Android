@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.staffApp.Database.DataBaseAdapter;
-import com.staffApp.Database.Employee;
+import com.staffApp.Models.Employee;
 import com.staffApp.RecyclerView.RecycleViewActivity;
 import com.staffApp.RecyclerView.RecycleViewAdapter;
 

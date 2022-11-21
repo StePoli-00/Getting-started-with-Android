@@ -9,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.staffApp.Database.Employee;
+import com.staffApp.Models.Employee;
 import com.staffApp.R;
 
 import java.util.ArrayList;
@@ -20,43 +19,38 @@ import java.util.ArrayList;
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private  FragmentManager fragmentManager;
-    private ArrayList<Employee> element=new ArrayList<>();
+    private ArrayList<Employee> elements=new ArrayList<>();
 
-    public RecycleViewAdapter(Context context, FragmentManager fragmentManager){
+    public RecycleViewAdapter(Context context, ArrayList<Employee> element){
 
-        this.fragmentManager=fragmentManager;
         this.context=context;
+        this.elements=element;
     }
     
     public void setItems(ArrayList<Employee> subElement) {
         Log.d("oggetti settati",String.valueOf(subElement.size()));
-        element.addAll(subElement);
+        elements.addAll(subElement);
         
     }
 
     public void clearItems(){
-        element.clear();
+        elements.clear();
     }
 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(context).inflate(R.layout.layout_item,parent,false);
+        View view=LayoutInflater.from(context).inflate(R.layout.row_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder=(ViewHolder) holder;
-        Employee employee=element.get(position);
+        Employee employee=elements.get(position);
         viewHolder.name.setText(employee.getName());
         viewHolder.position.setText(employee.getPosition());
-        viewHolder.edit.setOnClickListener(v->{ openUpdateDialog();
-
-          });
-
-
+        viewHolder.edit.setOnClickListener(v->{ openUpdateDialog();});
     }
 
 
@@ -70,23 +64,19 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
 
-
-
-
-
     public ArrayList<Employee> getElement() {
-        return element;
+        return elements;
     }
 
     public void setElement(ArrayList<Employee> element) {
-        this.element = element;
+        this.elements = element;
     }
 
 
 
     @Override
     public int getItemCount() {
-        return element.size();
+        return elements.size();
     }
 
 

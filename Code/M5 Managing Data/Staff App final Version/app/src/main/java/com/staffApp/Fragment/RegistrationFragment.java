@@ -1,4 +1,4 @@
-package com.staffApp.Registration;
+package com.staffApp.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +21,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.staffApp.LoginFragment;
 import com.staffApp.R;
-import com.staffApp.RecyclerView.RecycleViewActivity;
+
+import com.staffApp.Models.User;
+import com.staffApp.RecyclerView.NewRVActivity;
 import com.staffApp.Watchers.AgeWatcher;
 import com.staffApp.Watchers.NameWatcher;
 
@@ -134,7 +135,7 @@ public class RegistrationFragment extends Fragment  {
                                         if(task.isSuccessful())
                                         {
                                             Toast.makeText(context,"User Add succesfully", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(context, RecycleViewActivity.class));
+                                            startActivity(new Intent(context, NewRVActivity.class));
                                         }
                                         else
                                         {

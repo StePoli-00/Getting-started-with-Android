@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.staffApp.Fragment.LoginFragment;
+
 public class LandingActivity extends AppCompatActivity {
 
     LoginFragment loginFragment;
