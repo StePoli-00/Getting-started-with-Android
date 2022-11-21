@@ -17,7 +17,7 @@ import com.staffApp.R;
 
 import java.util.ArrayList;
 
-public class NewRVActivity extends AppCompatActivity {
+public class RVActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference database;
@@ -30,7 +30,7 @@ public class NewRVActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_recycle_activity);
+        setContentView(R.layout.recycle_activity);
         findViewById(R.id.add_button).setOnClickListener(v -> createInsertDialog());
         recyclerView=findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);

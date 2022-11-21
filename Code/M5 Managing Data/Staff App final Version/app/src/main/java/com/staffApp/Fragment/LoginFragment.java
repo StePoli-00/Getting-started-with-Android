@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.staffApp.R;
-import com.staffApp.RecyclerView.NewRVActivity;
+import com.staffApp.RecyclerView.RVActivity;
 
 
 public class LoginFragment extends Fragment {
@@ -101,7 +101,7 @@ public class LoginFragment extends Fragment {
 
 
     private void signIn(String email,String password) {
-        startActivity(new Intent(context, NewRVActivity.class));
+        startActivity(new Intent(context, RVActivity.class));
         getActivity().finish();
         /*firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @SuppressLint("LongLogTag")

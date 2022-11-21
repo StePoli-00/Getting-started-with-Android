@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.staffApp.R;
 
 import com.staffApp.Models.User;
-import com.staffApp.RecyclerView.NewRVActivity;
+import com.staffApp.RecyclerView.RVActivity;
 import com.staffApp.Watchers.AgeWatcher;
 import com.staffApp.Watchers.NameWatcher;
 
@@ -135,7 +135,7 @@ public class RegistrationFragment extends Fragment  {
                                         if(task.isSuccessful())
                                         {
                                             Toast.makeText(context,"User Add succesfully", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(context, NewRVActivity.class));
+                                            startActivity(new Intent(context, RVActivity.class));
                                         }
                                         else
                                         {
