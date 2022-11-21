@@ -1,10 +1,12 @@
 package com.staffApp.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,46 +15,62 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.staffApp.Database.DataBaseAdapter;
 import com.staffApp.Database.Employee;
 import com.staffApp.InsertDialog;
+import com.staffApp.LandingActivity;
 import com.staffApp.R;
 
 import java.util.ArrayList;
 
-public class RecycleViewActivity extends AppCompatActivity implements InsertDialog.InsertDialogListener {
+public class RecycleViewActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     SwipeRefreshLayout swipeRefleshLayout;
+    BottomNavigationView bottomNavigationView;
     RecyclerView recyclerView;
     RecycleViewAdapter recycleViewAdapter;
     DataBaseAdapter dataBaseAdapter;
     FloatingActionButton addbutton;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     boolean isLoading=false;
-   // String key=null;
+
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("user_from_RecycleViewActivity",FirebaseAuth.getInstance().getCurrentUser().getEmail());
         setContentView(R.layout.new_recycle_activity);
+        gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc= GoogleSignIn.getClient(this,gso);
       /*  swipeRefleshLayout=findViewById(R.id.swipe);*/
         addbutton=findViewById(R.id.add_button);
-        addbutton.setOnClickListener(v->{ openDialog();});
+        addbutton.setOnClickListener(v->{ addInsertDialog();});
         recyclerView=findViewById(R.id.recycleView);
-
-
         recyclerView.setHasFixedSize(true);
+        bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
         LinearLayoutManager manager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        recycleViewAdapter=new RecycleViewAdapter(this);
+        recycleViewAdapter=new RecycleViewAdapter(this,getSupportFragmentManager());
         recyclerView.setAdapter(recycleViewAdapter);
         dataBaseAdapter=new DataBaseAdapter();
 
+
         loadData();
+        swipeTodelete();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
@@ -71,19 +89,31 @@ public class RecycleViewActivity extends AppCompatActivity implements InsertDial
             }
         });
 
-        addSwipeTodelete();
 
 
-    }
-
-    private void openDialog() {
-        InsertDialog insertDialog=new InsertDialog();
-        insertDialog.show(getSupportFragmentManager(),"Insert Dialog");
 
     }
 
 
-    private void addSwipeTodelete() {
+    private void addInsertDialog() {
+
+       InsertDialog insertDialog=new InsertDialog(this,dataBaseAdapter);
+       insertDialog.createInsertDialog();
+       if(insertDialog.getAddResult())
+       {
+           insertDialog.dismiss();
+           loadData();
+       }
+
+    }
+
+
+
+
+
+
+
+    private void swipeTodelete() {
 
         // on below line we are creating a method to create item touch helper
         // method for adding swipe to delete functionality.
@@ -121,7 +151,7 @@ public class RecycleViewActivity extends AppCompatActivity implements InsertDial
                 // this method is called when item is swiped.
                 // below line is to remove item from our array list.
                 employees.remove(viewHolder.getAdapterPosition());
-                dataBaseAdapter.remove(deletedEmployee.getKey());
+                dataBaseAdapter.remove(deletedEmployee.getIdEmployee());
                 // below line is to notify our item is removed from adapter.
                 recycleViewAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 
@@ -160,13 +190,13 @@ public class RecycleViewActivity extends AppCompatActivity implements InsertDial
                         {
 
                             Employee employee=ds.getValue(Employee.class);
-                            employee.setKey(ds.getKey());
+                            employee.setIdEmployee(ds.getKey());
+                            Log.d("key",ds.getKey().toString());
+
                             employeeArrayList.add(employee);
                            // key=ds.getKey();
                         }
-                        Log.d("lista employee", String.valueOf(employeeArrayList.size()));
                         recycleViewAdapter.clearItems();
-
                         recycleViewAdapter.setItems(employeeArrayList);
                         recycleViewAdapter.notifyDataSetChanged();
                         isLoading=false;
@@ -191,14 +221,30 @@ public class RecycleViewActivity extends AppCompatActivity implements InsertDial
         loadData();
     }
 
-    @Override
-    public void insertData(String username, String position) {
 
-        Employee employee=new Employee(username,position);
-        dataBaseAdapter.add(employee)
-                .addOnSuccessListener(suc -> Toast.makeText(this, "Record inserted", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(er -> Toast.makeText(this, er.getMessage(), Toast.LENGTH_SHORT).show());
-        loadData();
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+
+            case R.id.logout:
+                signOut();
+                return true;
+
+        }
+        return false;
+    }
+
+    private void signOut() {
+     gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+         @Override
+         public void onComplete(@NonNull Task<Void> task) {
+             finish();
+             startActivity(new Intent(getApplicationContext(), LandingActivity.class));
+         }
+     });
 
     }
+
+
 }

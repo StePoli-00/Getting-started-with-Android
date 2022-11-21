@@ -7,16 +7,17 @@ import java.io.Serializable;
 public class Employee  implements Serializable {
 
     @Exclude
-    private String key;
-    private String name,position;
+    private String idEmployee;
+    private String name,position,idBoss;
 
     public Employee(){
 
     }
 
-    public Employee(String name, String position) {
+    public Employee(String name, String position,String idBoss) {
         this.name = name;
         this.position = position;
+        this.idBoss=idBoss;
     }
 
     public String getName() {
@@ -34,11 +35,20 @@ public class Employee  implements Serializable {
     public void setPosition(String position) {
         this.position = position;
     }
-    public String getKey() {
-        return key;
+
+    public String getIdEmployee() {
+        return idEmployee;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setIdEmployee(String idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public String getIdBoss() {
+        return idBoss;
+    }
+
+    public void setIdBoss(String idBoss) {
+        idBoss = idBoss;
     }
 }

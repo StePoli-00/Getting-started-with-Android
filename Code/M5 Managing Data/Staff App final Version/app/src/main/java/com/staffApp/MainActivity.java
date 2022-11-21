@@ -1,3 +1,4 @@
+/*
 package com.staffApp;
 
 import android.content.Intent;
@@ -98,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*private void setSwipeToDelete() {
+    */
+/*private void setSwipeToDelete() {
         //set swipe direction to left
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
             @Override
@@ -142,8 +144,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }*//*
 
 
 
-}
+
+}*/

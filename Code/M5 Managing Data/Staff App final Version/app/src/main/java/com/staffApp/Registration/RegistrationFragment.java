@@ -71,7 +71,7 @@ public class RegistrationFragment extends Fragment  {
 
     private void backToLogin() {
         LoginFragment loginFragment=new LoginFragment(context);
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container,loginFragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container,loginFragment).addToBackStack("Registration").commit();
     }
 
     public void checkRegistrationUser() {
@@ -105,11 +105,17 @@ public class RegistrationFragment extends Fragment  {
                 return;
             }
         }
+
         addUser(username,age,email,password);
         return;
 
 
 
+    }
+
+    private boolean checkIfUserExists(String email) {
+
+        return true;
     }
 
     private void addUser(String username, String age,String email, String password) {
