@@ -1,85 +1,108 @@
 package com.staffApp;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class UpdateDialog extends AppCompatDialogFragment {
+import com.google.android.gms.tasks.OnFailureListener;
+import com.staffApp.Database.DataBaseAdapter;
+import com.staffApp.RecyclerView.RVAdapter;
 
-    private EditText editName, editPosition;
-    private UpdateDialogListener updateDialogListener;
+import java.util.HashMap;
 
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater=getActivity().getLayoutInflater();
-        View view= inflater.inflate(R.layout.update_dialog,null);
-        builder.setView(view)
-                .setNegativeButton("cancel", (dialog, which) -> {
+public class UpdateDialog extends android.app.Dialog {
 
-                }).setPositiveButton("Add", (dialog, which) -> {
+    private EditText editName,editPosition,editEmail,editPhone;
+    private TextView updateButton;
+    private android.app.Dialog dialog;
+    boolean addResult;
+    DataBaseAdapter dataBaseAdapter;
+    private  String key;
 
 
-                    String name=editName.getText().toString();
-                    String position=editPosition.getText().toString();
-                    if(name.length()!=0 && position.length()!=0) {
-                        updateDialogListener.updateData(name, position);
-                    }
-                    else
-                    {
-                        editName.setError("Empty field");
-                        editPosition.setError("Empty field");
 
-                    }
 
-                });
-        editName=view.findViewById(R.id.update_name_dialog);
-        editPosition=view.findViewById(R.id.update_position_dialog);
-        return builder.create();
+
+
+    public boolean getAddResult() {
+        return addResult;
+    }
+
+    private void setAddResult(boolean addResult) {
+        this.addResult = addResult;
+    }
+
+    public UpdateDialog(@NonNull Context context, RVAdapter.ViewHolder holder) {
+        super(context);
+        this.dialog=new android.app.Dialog(getContext());
+        dataBaseAdapter=new DataBaseAdapter();
+        dialog.setContentView(R.layout.update_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.curve_shape);
+        editName=dialog.findViewById(R.id.update_name_dialog);
+        editPosition=dialog.findViewById(R.id.update_position_dialog);
+        editEmail=dialog.findViewById(R.id.update_email_dialog);
+        editPhone=dialog.findViewById(R.id.udpate_phone_dialog);
+        updateButton =dialog.findViewById(R.id.dialog_update_btn);
+
+        editName.setText(holder.name.getText());
+        editPosition.setText(holder.position.getText());
+        editEmail.setText(holder.email.getText());
+        editPhone.setText(holder.phone.getText());
+
+        updateButton.setOnClickListener(v->{ addOnClickListener();
+        });
+        dialog.show();
 
     }
 
+    /***
+     * add onClickListener to addbutton, when user try to insert new data
+     */
+    public void addOnClickListener() {
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
+        updateButton.setOnClickListener(v -> {
+               updateData();
+            });
 
-        try {
-            updateDialogListener= (UpdateDialog.UpdateDialogListener) context;
-        } catch (ClassCastException e) {
-            throw  new ClassCastException(context.toString()+"must implement InsertDialogListener");
-        }
+    }
+
+    private boolean checkInput() {
+        return true;
     }
 
 
-    public EditText getEditName() {
-        return editName;
+    public void updateData() {
+
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("name",editName.getText().toString());
+        map.put("position",editPosition.getText().toString());
+        map.put("email",editEmail.getText().toString());
+        map.put("phone",editPhone.getText().toString());
+        dataBaseAdapter.update(getKey(),map).addOnSuccessListener(unused -> {
+            dialog.dismiss();
+            Toast.makeText(getContext(),"Data updated",Toast.LENGTH_SHORT);
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                dialog.dismiss();
+                Toast.makeText(getContext(),"Update Failed",Toast.LENGTH_SHORT);
+            }
+        });
+
+
     }
 
-    public void setEditName(EditText editName) {
-        this.editName = editName;
+    public String getKey() {
+        return key;
     }
 
-    public EditText getEditPosition() {
-        return editPosition;
-    }
-
-    public void setEditPosition(EditText editPosition) {
-        this.editPosition = editPosition;
+    public void setKey(String key) {
+        this.key = key;
     }
 
 
-    public interface  UpdateDialogListener{
 
-        void updateData(String username,String position);
-    }
 }

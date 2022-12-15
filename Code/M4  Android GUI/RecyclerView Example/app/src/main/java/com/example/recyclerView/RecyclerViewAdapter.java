@@ -1,9 +1,8 @@
-package com.example.listview;
+package com.example.recyclerView;
 
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,4 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public int getItemCount() {
         return element.size();
     }
+
+
+
 }

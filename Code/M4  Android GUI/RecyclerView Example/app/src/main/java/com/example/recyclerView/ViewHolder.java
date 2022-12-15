@@ -1,4 +1,4 @@
-package com.example.listview;
+package com.example.recyclerView;
 
 import android.view.View;
 import android.widget.TextView;

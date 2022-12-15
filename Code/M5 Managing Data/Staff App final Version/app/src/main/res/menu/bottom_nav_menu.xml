@@ -10,17 +10,19 @@
         android:id="@+id/person"
         android:icon="@drawable/ic_person"
         android:title="Profile"/>
+-->
+
+
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"/>
 
     <item
         android:id="@+id/report_issue"
         android:icon="@drawable/ic_report_problem"
-        android:title="Issue"/>-->
-
-
-   <!-- <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings"/>-->
+        android:title="Issue"/>
 
     <item
         android:id="@+id/logout"

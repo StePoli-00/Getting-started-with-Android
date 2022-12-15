@@ -1,30 +1,18 @@
 package com.staffApp.Models;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 
 public class User  implements Serializable {
 
-    private  String name, age,email,password;
+    @Exclude
+    private String key;
+    private  String name,age,email,password;
 
     public User() {
 
-    }
 
-
-
-    public User(String name, String age, String email) {
-        this.name = name;
-        this.age = age;
-        this.email = email;
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getAge() {
@@ -33,6 +21,31 @@ public class User  implements Serializable {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public User(String name, String email, String age, String password) {
+
+        this.name=name;
+        this.age=age;
+        this.password=password;
+        this.email = email;
+
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

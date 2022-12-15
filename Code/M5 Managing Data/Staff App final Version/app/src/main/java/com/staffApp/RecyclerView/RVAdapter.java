@@ -6,11 +6,8 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -18,14 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.orhanobut.dialogplus.DialogPlus;
 import com.staffApp.Database.DataBaseAdapter;
 import com.staffApp.Models.Employee;
 import com.staffApp.R;
-
-import java.util.HashMap;
+import com.staffApp.UpdateDialog;
 
 public class RVAdapter extends  FirebaseRecyclerAdapter<Employee,RVAdapter.ViewHolder>{
 
@@ -64,7 +57,7 @@ public class RVAdapter extends  FirebaseRecyclerAdapter<Employee,RVAdapter.ViewH
         viewHolder.position.setText(model.getPosition());
         viewHolder.email.setText(model.getEmail());
         viewHolder.phone.setText(model.getPhone());
-        viewHolder.editButton.setOnClickListener(v -> createUpdateDialog(index,model));
+        viewHolder.editButton.setOnClickListener(v -> createUpdateDialog(holder,index,model));
         viewHolder.deleteButton.setOnClickListener(v-> createDeleteDialog(position));
     }
 
@@ -98,7 +91,7 @@ public class RVAdapter extends  FirebaseRecyclerAdapter<Employee,RVAdapter.ViewH
 
     }
 
-    public void createUpdateDialog( int position, @NonNull Employee model)
+   /* public void createUpdateDialog( int position, @NonNull Employee model)
     {
         final DialogPlus dialogPlus= DialogPlus.newDialog(context)
                 .setContentHolder(new com.orhanobut.dialogplus.ViewHolder(R.layout.update_popup))
@@ -119,45 +112,22 @@ public class RVAdapter extends  FirebaseRecyclerAdapter<Employee,RVAdapter.ViewH
         dialogPlus.show();
         editButton.setOnClickListener(v->{updateItem(dialogPlus,position,name.getText().toString(),pos.getText().toString()
         ,email.getText().toString(),phone.getText().toString());});
-    }
+    }*/
 
-
-    public void updateItem(DialogPlus dialogPlus, int index, String name, String position, String email, String phone)
-    {
-        HashMap<String,Object> map=new HashMap<>();
-        map.put("name",name);
-        map.put("position",position);
-        map.put("email",email);
-        map.put("phone",phone);
-        String path[]=String.valueOf(getRef(index)).split("/Employee/");
-        dataBaseAdapter.update(path[1],map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(context,"Data Update Successfully",Toast.LENGTH_SHORT).show();
-                        dialogPlus.dismiss();
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context,"Error During Updating",Toast.LENGTH_SHORT).show();
-                    }
-                });
+    public void createUpdateDialog(ViewHolder holder, int position, @NonNull Employee model){
+        UpdateDialog updateDialog=new UpdateDialog(context,holder);
+        String path[]=String.valueOf(getRef(position)).split("/Employee/");
+        updateDialog.setKey(path[1]);
 
     }
 
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
 
 
 
 
-    class ViewHolder extends  RecyclerView.ViewHolder {
+
+
+    public class ViewHolder extends  RecyclerView.ViewHolder {
 
         public TextView name,position,email,phone;
         ImageView imageView;
@@ -174,6 +144,14 @@ public class RVAdapter extends  FirebaseRecyclerAdapter<Employee,RVAdapter.ViewH
             deleteButton=itemView.findViewById(R.id.imageButton_delete);
 
         }
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
 

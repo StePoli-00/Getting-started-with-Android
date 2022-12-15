@@ -27,7 +27,7 @@ public class NameWatcher implements TextWatcher {
     public void afterTextChanged(Editable editable) {
         if (editable != null &&  editable.length() != 0) {
 
-          if(editable.toString().matches("[0-9]+"))
+          if(!editable.toString().matches("[0-9]+"))
           {
               editText.setError("Name must constains letter");
           }

@@ -1,5 +1,6 @@
 package com.staffApp.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -8,10 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.staffApp.InsertDialog;
+import com.staffApp.LandingActivity;
 import com.staffApp.Models.Employee;
 import com.staffApp.R;
 
@@ -23,6 +26,7 @@ public class RVActivity extends AppCompatActivity {
     DatabaseReference database;
     RVAdapter recycleViewAdapter;
     ArrayList<Employee> employees;
+    BottomNavigationView bottomNavigationView;
     FloatingActionButton floatingActionButton;
 
 
@@ -31,6 +35,17 @@ public class RVActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle_activity);
+        bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) item -> {
+
+            switch (item.getItemId()){
+                case R.id.logout:
+                    startActivity(new Intent(RVActivity.this, LandingActivity.class));
+                    finish();
+                break;
+            }
+        return true;
+        });
         findViewById(R.id.add_button).setOnClickListener(v -> createInsertDialog());
         recyclerView=findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
@@ -46,6 +61,9 @@ public class RVActivity extends AppCompatActivity {
         insertDialog.addOnClickListener();
 
     }
+
+
+
 
     @Override
     protected void onStart() {

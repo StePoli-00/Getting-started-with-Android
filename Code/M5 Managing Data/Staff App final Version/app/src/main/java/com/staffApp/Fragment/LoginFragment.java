@@ -3,6 +3,7 @@ package com.staffApp.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.staffApp.Models.User;
 import com.staffApp.R;
 import com.staffApp.RecyclerView.RVActivity;
 
@@ -30,7 +36,7 @@ public class LoginFragment extends Fragment {
     TextView signupButton;
     Button signinWithButton;
     Context context;
-    EditText editUsername,editpassword;
+    EditText editEmail, editPasswod;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     boolean found=false;
@@ -45,13 +51,12 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editUsername=view.findViewById(R.id.login_edit_username);
-        editpassword=view.findViewById(R.id.login_edit_password);
+        editEmail=view.findViewById(R.id.login_edit_username);
+        editPasswod =view.findViewById(R.id.login_edit_password);
         loginButton=view.findViewById(R.id.login_btn_done);
-        loginButton.setOnClickListener(v->{checkLoginCredential();});
+        loginButton.setOnClickListener(v->{loginCredential();});
         signupButton=view.findViewById(R.id.login_bnt_signup);
         signupButton.setOnClickListener(v->{ getFragmentManager().beginTransaction().replace(R.id.fragment_container,registrationFragment).addToBackStack("Login").commit();});
-
 
     }
 
@@ -73,24 +78,56 @@ public class LoginFragment extends Fragment {
     }
 
 
+    private void loginCredential() {
+
+        String email=editEmail.getText().toString();
+        String password= editPasswod.getText().toString();
+        FirebaseDatabase.getInstance().getReference().child("User")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            User user = snapshot.getValue(User.class);
+                            if(email.equals(user.getEmail()) && password.equals(user.getPassword()))
+                            {
+                                Log.d("entrato"," entrato");
+                                startActivity(new Intent(context,RVActivity.class));
+
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
+
+    }
 
 
     private void checkLoginCredential() {
+
+
+
         boolean correct=true;
-        String user=editUsername.getText().toString();
-        String pass=editpassword.getText().toString();
+        String user=editEmail.getText().toString();
+        String pass= editPasswod.getText().toString();
 
 
         if(user.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(user).matches())
         {
-            editUsername.setError("insert valid Email");
-            editUsername.requestFocus();
+            editEmail.setError("insert valid Email");
+            editEmail.requestFocus();
             correct=false;
 
         }
         if(pass.isEmpty()){
-            editpassword.setError("Insert Password");
-            editpassword.requestFocus();
+            editPasswod.setError("Insert Password");
+            editPasswod.requestFocus();
             correct=false;
         }
         if(correct) {

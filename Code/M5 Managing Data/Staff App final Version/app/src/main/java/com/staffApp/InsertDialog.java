@@ -1,6 +1,7 @@
 package com.staffApp;
 
 import android.content.Context;
+import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.staffApp.Database.DataBaseAdapter;
 import com.staffApp.Models.Employee;
+import com.staffApp.Watchers.NameWatcher;
 
 public class InsertDialog extends android.app.Dialog {
 
@@ -19,6 +21,9 @@ public class InsertDialog extends android.app.Dialog {
     private android.app.Dialog dialog;
     boolean addResult;
     DataBaseAdapter dataBaseAdapter;
+    String allCountryRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+    String patternName="[A-Za-z]";
+    NameWatcher nameWatcher;
 
     public boolean getAddResult() {
         return addResult;
@@ -33,16 +38,16 @@ public class InsertDialog extends android.app.Dialog {
         this.dialog=new android.app.Dialog(getContext());
         dataBaseAdapter=new DataBaseAdapter();
         dialog.setContentView(R.layout.insert_dialog);
+
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.curve_shape);
         editName=dialog.findViewById(R.id.add_name_dialog);
         editPosition=dialog.findViewById(R.id.add_position_dialog);
         editEmail=dialog.findViewById(R.id.add_email_dialog);
         editPhone=dialog.findViewById(R.id.add_phone_dialog);
         addButton=dialog.findViewById(R.id.dialog_add_btn);
-        addButton.setOnClickListener(v->{ addOnClickListener();
-        });
+        addButton.setOnClickListener(v->{ addOnClickListener();});
         dialog.show();
-
+        nameWatcher=new NameWatcher(context,editPosition);
     }
 
     /***
@@ -53,32 +58,11 @@ public class InsertDialog extends android.app.Dialog {
 
             addButton.setOnClickListener(v -> {
 
-                String name=editName.getText().toString();
-                String position=editPosition.getText().toString();
-                if(name.length()!=0 && position.length()!=0) {
-                    boolean ris=checkInput();
-                    if(ris==true) {
-
+                if(checkInput()) {
                         dialog.dismiss();
-
                         insertData();
 
-
                     }
-                    else
-                    {
-                        editName.setError("Invalid Input");
-                        editPosition.setError("Invalid Input");
-                    }
-                }
-                else
-                {
-                    editName.setError("Empty field");
-                    editPosition.setError("Empty field");
-
-                }
-
-
 
             });
 
@@ -86,7 +70,50 @@ public class InsertDialog extends android.app.Dialog {
     }
 
     private boolean checkInput() {
+        String name=editName.getText().toString().trim();
+        String postion=editPosition.getText().toString().trim();
+        String email=editEmail.getText().toString().trim();
+        String phone=editPhone.getText().toString().trim();
+
+
+        if(name.isEmpty())
+        {
+
+            editName.setError("Name is Required");
+            editName.requestFocus();
+            return false;
+        }
+      /*  else if(!Pattern.compile(patternName).matcher(name).matches()){
+
+                editName.setError("Name must contains only letters");
+                editName.requestFocus();
+                return false;
+
+        }*/
+        if(postion.isEmpty())
+        {
+            editPosition.setError("position is Required");
+            editPosition.requestFocus();
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editEmail.setError("Email  is Required");
+            editEmail.requestFocus();
+            return false;
+        }
+
+
+           /* if (!Patterns.PHONE.matcher(phone).matches()) {
+                editPhone.setError("");
+                editPhone.requestFocus();
+                return false;
+            }*/
+
+
         return true;
+
+
     }
 
 

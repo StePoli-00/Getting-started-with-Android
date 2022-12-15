@@ -124,18 +124,16 @@ public class RegistrationFragment extends Fragment  {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        User user=new User(username,age,email);
+                        User user=new User(username,email,age,password);
                         //Add/Create Users node
-                        FirebaseDatabase.getInstance().getReference("Users")
-                                //retrive id from authentication in order to save it inside the Real-time database
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        FirebaseDatabase.getInstance().getReference("User").push().setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful())
                                         {
                                             Toast.makeText(context,"User Add succesfully", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(context, RVActivity.class));
+
                                         }
                                         else
                                         {

@@ -18,7 +18,17 @@ public class MainActivity extends AppCompatActivity {
             "Bob Keen",
             "Carl Robb",
             "Elen Whitmore",
-            "Bet Bush"
+            "Bet Bush",
+            "Peter Robb",
+            "Elen Whitmore",
+            "Bet Greeen",
+            "Carl Robb",
+            "Elen Whitmore",
+            "Gwen Alsh",
+            "Carl Paulson",
+            "Elen Blackmoree",
+            "Betty White"
+
     };
 
     @Override
