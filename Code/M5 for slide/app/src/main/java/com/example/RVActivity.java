@@ -2,7 +2,6 @@ package com.example;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,15 +60,13 @@ public class RVActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-
+                recycleViewAdapter.clearItems();
                 for (DataSnapshot data : snapshot.getChildren())
                 {
                     Employee emp = data.getValue(Employee.class);
                     emp.setKey(data.getKey());
                     employees.add(emp);
                 }
-                //recycleViewAdapter.clearItems();
-                recycleViewAdapter.setItems(employees);
 
                 recycleViewAdapter.notifyDataSetChanged();
 
@@ -88,8 +85,6 @@ public class RVActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        Log.d("entrato","entrato in onResume ");
-        loadData();
     }
 
 
