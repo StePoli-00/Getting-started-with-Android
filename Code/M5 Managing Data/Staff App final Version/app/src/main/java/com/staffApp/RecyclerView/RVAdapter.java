@@ -18,7 +18,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.staffApp.Database.DataBaseAdapter;
 import com.staffApp.Models.Employee;
 import com.staffApp.R;
-import com.staffApp.UpdateDialog;
+import com.staffApp.Dialog.UpdateDialog;
 
 public class RVAdapter extends  FirebaseRecyclerAdapter<Employee,RVAdapter.ViewHolder>{
 

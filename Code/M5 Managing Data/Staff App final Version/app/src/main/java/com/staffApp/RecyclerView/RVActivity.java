@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.staffApp.InsertDialog;
+import com.staffApp.Dialog.InsertDialog;
 import com.staffApp.LandingActivity;
 import com.staffApp.Models.Employee;
 import com.staffApp.R;
@@ -28,8 +28,6 @@ public class RVActivity extends AppCompatActivity {
     ArrayList<Employee> employees;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton floatingActionButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +59,6 @@ public class RVActivity extends AppCompatActivity {
         insertDialog.addOnClickListener();
 
     }
-
-
 
 
     @Override
