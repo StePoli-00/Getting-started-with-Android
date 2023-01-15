@@ -1,11 +1,14 @@
 package com.SQLite;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.SQLite.DataBase.old.MainActivity;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -25,6 +28,7 @@ public class AddActivity extends AppCompatActivity {
         addButton.setOnClickListener(view -> {
             addEmployee();
             finish();
+
         });
         dataBaseAdapter=new DataBaseAdapter(this);
     }
@@ -39,7 +43,7 @@ public class AddActivity extends AppCompatActivity {
             String idEmp=dataBaseAdapter.getEmployeeId(name,position);
             Employee employee=new Employee(idEmp,name,position);
             dataBaseAdapter.getEmployeeData().add(employee);
-            Toast.makeText(this,"Record inserted",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,employee.getName()+" inserted",Toast.LENGTH_SHORT).show();
         }
         else
         {

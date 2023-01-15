@@ -28,12 +28,6 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         this.employees =element;
     }
 
-    public void setItems(ArrayList<Employee> subElement) {
-
-        employees.addAll(subElement);
-        Log.d("Settati",String.valueOf(employees.size()));
-
-    }
 
 
     public void clearItems(){
@@ -72,7 +66,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private void deleteEmployee( int position, Employee emp) {
         DataBaseAdapter dataBaseAdapter=new DataBaseAdapter(context);
         dataBaseAdapter.deleteData(emp.getName());
-            Toast.makeText(context, "Employee is removed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, emp.getName()+" deleted", Toast.LENGTH_SHORT).show();
             notifyItemRemoved(position);
             employees.remove(emp);
 

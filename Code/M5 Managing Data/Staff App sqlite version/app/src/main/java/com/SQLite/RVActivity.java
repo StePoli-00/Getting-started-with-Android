@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -23,6 +24,7 @@ public class RVActivity extends AppCompatActivity {
     boolean isLoading=false;
     String key=null;
     ArrayList<Employee> employees=new ArrayList<>();
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +39,13 @@ public class RVActivity extends AppCompatActivity {
         employees=dataBaseAdapter.getEmployeeData();
         recycleViewAdapter=new RVAdapter(this,employees);
         recyclerView.setAdapter(recycleViewAdapter);
+        loadData();
         addButton.setOnClickListener(view -> {
             Intent intent=new Intent(RVActivity.this, AddActivity.class);
             startActivity(intent);
         });
+
+
 
 
   }
@@ -48,12 +53,18 @@ public class RVActivity extends AppCompatActivity {
     private void loadData()
     {
 
-        Log.d("Loading","loading");
+        ArrayList<Employee> emp=dataBaseAdapter.getEmployeeData();
+        for (Employee e:emp)
+        {
+            System.out.println(e.getName());
+        }
+        recycleViewAdapter.clearItems();
+        recycleViewAdapter.setEmployees(emp);
+
         recycleViewAdapter.notifyDataSetChanged();
 
+
     }
-
-
 
 
 }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataBaseAdapter  {
 
@@ -18,10 +19,6 @@ public class DataBaseAdapter  {
     private Context context;
     private ArrayList<Employee> employees;
 
-
-    public DataBaseAdapter() {
-
-    }
 
     public DataBaseAdapter(Context context) {
         this.sqLiteHelper = new SQLiteHelper(context);
@@ -38,7 +35,6 @@ public class DataBaseAdapter  {
     {
         SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-
         contentValues.put(SQLiteHelper.NAME,name);
         contentValues.put(SQLiteHelper.POSITION,position);
         long id=db.insert(sqLiteHelper.TABLE_NAME,null,contentValues);
@@ -54,8 +50,7 @@ public class DataBaseAdapter  {
         String columns[]={sqLiteHelper.UID};
         String selectionArgs[]={name,position};
         Cursor cursor = db.query(SQLiteHelper.TABLE_NAME, columns, selection, selectionArgs, null, null,null);
-        //Log.d("Cursor",cursor.toString());
-        //Log.d("Cursor",String.valueOf(cursor.getInt(1)));
+
         try{
             return String.valueOf(cursor.getInt(1));
         }
@@ -106,23 +101,18 @@ public class DataBaseAdapter  {
 
     }
 
-    public int  updateData(String name, String position)
+    public int  updateData(String[] values, String id )
     {
-        SQLiteDatabase db=sqLiteHelper.getWritableDatabase();
-        ArrayList<String> users=getUsers();
+        SQLiteDatabase db=new SQLiteHelper(context).getWritableDatabase();
         Log.d("Update",db.toString());
-        if(users.contains(name))
-        {
-            String queryUpdate=sqLiteHelper.NAME+"=?";
+
+            String queryUpdate=sqLiteHelper.UID+"=?";
             ContentValues contentValues=new ContentValues();
-            contentValues.put(sqLiteHelper.NAME,name);
-            contentValues.put(sqLiteHelper.POSITION,position);
-            String whereArgs[]={name};
+            contentValues.put(sqLiteHelper.NAME,values[0]);
+            contentValues.put(sqLiteHelper.POSITION,values[1]);
+            String whereArgs[]={id};
             int rowNum=db.update(SQLiteHelper.TABLE_NAME,contentValues,queryUpdate,whereArgs);
             return rowNum;
-        }
-        return -1;
-
     }
 
     public String getAllData(){
