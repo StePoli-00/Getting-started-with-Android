@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example_slide">
+    package="com.App">
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@android:drawable/star_big_on"
+
         android:label="@string/app_name"
+        android:icon="@mipmap/staff"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:theme="@style/Theme.SqLite"
         tools:targetApi="31">
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-
 
         <activity
-            android:name=".HomeActivity"
+            android:name="com.App.UpdateActivity"
             android:exported="false" />
 
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.App.AddActivity"
             android:exported="false" />
-    </application>
 
+        <activity
+            android:name="com.App.MainActivity"
+            android:exported="false"/>
+
+    <activity
+        android:name="com.App.LandingActivity"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+</application>
 </manifest>

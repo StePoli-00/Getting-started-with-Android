@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/curve_shape"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Employee"
+        android:textSize="30sp"
+        android:layout_marginBottom="30dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/orange2"
+        />
+
+
+    <EditText
+        android:id="@+id/update_name_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:imeOptions="actionNext"
+        android:hint="name"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/update_position_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:imeOptions="actionDone"
+        android:hint="position"
+        android:minHeight="48dp"/>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        app:cardCornerRadius="90dp"
+
+        android:backgroundTint="@color/orange2"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/update_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+
+
